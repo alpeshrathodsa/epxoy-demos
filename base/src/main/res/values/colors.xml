@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">#476c88</color>
+    <color name="colorPrimaryDark">#3d5e77</color>
+    <color name="colorPrimaryLight">#527997</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="textColor">#919ca5</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="colorShimmer">#dfdfdf</color>
+    <color name="cardBackgroundWhite">#f8f9f9</color>
+    <color name="colorPriceSpecification">#c0cad2</color>
+    <color name="colorWindowsSecondaryBg">#f8f9f9</color>
+    <color name="colorError">#F44336</color>
+</resources>

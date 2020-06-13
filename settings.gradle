@@ -1,0 +1,3 @@
+include ':base'
+rootProject.name='Exoxy Carousel Demo'
+include ':app'

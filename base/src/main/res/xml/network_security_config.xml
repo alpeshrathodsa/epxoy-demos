@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+    <!--todo alpesh change domain name-->
+    <domain-config cleartextTrafficPermitted="true">
+        <!--<domain includeSubdomains="true">192.168.1.19</domain>-->
+        <domain includeSubdomains="true">api.stage.qhb5gf8hemayfruxq9.tradeloop.in</domain>
+    </domain-config>
+</network-security-config>

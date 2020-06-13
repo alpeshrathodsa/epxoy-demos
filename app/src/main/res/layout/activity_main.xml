@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.MainActivity">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_image_preload"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:text="Image Preload"
+        app:layout_constraintBottom_toTopOf="@+id/btn_paging_demo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_paging_demo"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:text="Paging Demo"
+        app:layout_constraintBottom_toTopOf="@+id/btn_carousel_demo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_image_preload"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_carousel_demo"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:text="Carousel Demo"
+        app:layout_constraintBottom_toTopOf="@+id/btn_video_demo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_paging_demo"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_video_demo"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:text="Video Demo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_carousel_demo"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

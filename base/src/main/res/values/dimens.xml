@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--pinView-->
+    <dimen name="pin_view_item_size">48dp</dimen>
+    <dimen name="pin_view_item_radius">5dp</dimen>
+    <dimen name="pin_view_item_spacing">5dp</dimen>
+    <dimen name="pin_view_item_line_width">2dp</dimen>
+
+    <dimen name="spacing_normal">@dimen/_8sdp</dimen>
+    <dimen name="spacing_small">@dimen/_7sdp</dimen>
+    <dimen name="spacing_tiny">@dimen/_2sdp</dimen>
+</resources>

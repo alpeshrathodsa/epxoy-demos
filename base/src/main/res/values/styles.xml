@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Base.Theme.AppCompat.Dialog" parent="Base.V7.Theme.AppCompat.Dialog" />
+
+    <style name="RegularTitleTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/proxima_nova_regular</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#283e4e</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+    </style>
+
+    <style name="DefaultButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="cornerRadius">@dimen/_5sdp</item>
+        <item name="fontFamily">@font/proxima_nova_s_bold</item>
+        <item name="layout_constrainedWidth">true</item>
+        <item name="layout_constrainedHeight">true</item>
+        <item name="layout_constraintWidth_min">@dimen/_115sdp</item>
+        <item name="layout_constraintHeight_min">@dimen/_45sdp</item>
+    </style>
+</resources>

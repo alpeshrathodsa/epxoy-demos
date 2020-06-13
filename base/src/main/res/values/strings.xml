@@ -1,0 +1,48 @@
+<resources>
+
+    <!--Defaults for Alert Dialog-->
+    <string name="default_alert_dialog_button_title">OK</string>
+    <!--Defaults for SnackBar-->
+    <string name="default_snackbar_action_title">RETRY</string>
+    <!--Defaults no list item-->
+    <string name="msg_no_items_found">No items found</string>
+
+    <!--Contact Us-->
+    <string name="title_contact">Contact</string>
+
+    <!--Common-->
+    <string name="error_invalid_email">Please enter valid email</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_update">Update</string>
+    <string name="action_submit">Submit</string>
+
+    <!--api string-->
+    <string name="error_internal_server">We could not complete your request.</string>
+    <string name="error_no_internet">No internet connection.</string>
+    <string name="error_connection_timeout">Cannot connect to server.\nPlease try again later.</string>
+    <string name="error_something_went_wrong">Something went wrong!!\nPlease try again later.</string>
+    <string name="error_io_exception">We could not complete your request.</string>
+    <string name="error_upload_failed">Upload Failed.</string>
+
+    <string name="product_price_range">\u20B9%.2f - \u20B9%.2f</string>
+    <string name="product_price_range_single">\u20B9%.2f</string>
+    <string name="product_discount">No discount available.</string>
+    <string name="product_specification">%s :</string>
+    <string name="product_variant">Size</string>
+    <string name="product_minimum_quantity">Minimum Quantity</string>
+    <string name="product_maximum_quantity">Maximum Quantity</string>
+    <string name="product_price">Price</string>
+    <string name="order_price_range">Price : </string>
+
+    <!--Logout-->
+    <string name="alert_logout">Are you sure you want to logout?</string>
+    <string name="action_yes">Yes</string>
+    <string name="action_no">No</string>
+    <string name="action_verify">Verify</string>
+
+    <string name="alert_delete_document">Are you sure you want to delete this document?</string>
+    <string name="alert_verify_account">Mobile number is not verified. Please click <b>Verify</b> to continue.</string>
+    <string name="label_count_99_plus">99+</string>
+</resources>
