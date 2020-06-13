@@ -1,17 +1,11 @@
 package com.sa.demo.exoxycarouseldemo.views.carousel
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.RequestManager
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.signature.ObjectKey
 import com.sa.demo.exoxycarouseldemo.R
-import com.sa.demo.exoxycarouseldemo.data.ITEM_TYPE
+import com.sa.demo.exoxycarouseldemo.data.EnumItemType
 import com.sa.demo.exoxycarouseldemo.data.Profile
 import com.sa.demo.exoxycarouseldemo.utils.EndlessRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.activity_carousel_demo.*
@@ -141,7 +135,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "2 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_GROUP_LOAD_MORE
+            EnumItemType.CAROUSEL_LIST_GROUP
         ),
         Profile(
             7,
@@ -158,7 +152,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "16 min ago",
-            ITEM_TYPE.CAROUSEL_GRID_GROUP
+            EnumItemType.CAROUSEL_LIST_LOAD_MORE
         ),
         Profile(
             8,
@@ -175,25 +169,25 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "21 min ago",
-            ITEM_TYPE.CAROUSEL_GRID_MANUAL
-        )/*,
+            EnumItemType.CAROUSEL_GRID_DEFAULT
+        ),
         Profile(
             9,
             "Jack",
             ArrayList(
                 listOf(
                     "https://i.redd.it/c2ozz6pdhyp11.jpg",
-                    "https://i.redd.it/g7cv0byl5wp11.jpg",
+                    "https://i.redd.it/qqi87wl8uup11.jpg",
                     "https://i.redditmedia.com/pA8syU4qzqyqn8ggXxZntuM-JIvBWGQvRo1c44yIvPs.jpg?s=b92a768940b1fa07b54e47d5dbe95f99",
                     "https://i.redd.it/nbju2rir9xp11.jpg",
                     "https://i.redd.it/y20c2oi9myp11.jpg",
                     "https://i.redd.it/6b740x7ptyp11.jpg",
-                    "https://i.redd.it/qqi87wl8uup11.jpg"
+                    "https://i.redd.it/g7cv0byl5wp11.jpg"
                 )
             ),
             "2 min ago",
-            ITEM_TYPE.CAROUSEL_PAGED_LIST
-        ),
+            EnumItemType.CAROUSEL_GRID_GROUP
+        )/*,
         Profile(
             10,
             "Marcus",
@@ -246,7 +240,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "2 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_BUILDER
+            EnumItemType.CAROUSEL_LIST_DEFAULT
         ),
         Profile(
             1,
@@ -263,7 +257,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "16 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_MANUAL
+            EnumItemType.CAROUSEL_LIST_INDICATOR
         ),
         Profile(
             2,
@@ -280,7 +274,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "21 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_INDICATOR
+            EnumItemType.CAROUSEL_LIST_INDICATOR_CUSTOM
         )
         /*,
         Profile(

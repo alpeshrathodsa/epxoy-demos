@@ -5,16 +5,16 @@ data class Profile(
     val name: String,
     val image: ArrayList<String>,
     val lastSeen: String,
-    val type: ITEM_TYPE = ITEM_TYPE.CAROUSEL_LIST_BUILDER,
+    val type: EnumItemType = EnumItemType.CAROUSEL_LIST_DEFAULT,
     val hasMore: Boolean = false
 )
 
-enum class ITEM_TYPE {
-    CAROUSEL_LIST_BUILDER,
-    CAROUSEL_LIST_MANUAL,
+enum class EnumItemType {
+    CAROUSEL_LIST_DEFAULT,
     CAROUSEL_LIST_INDICATOR,
-    CAROUSEL_LIST_GROUP_LOAD_MORE,
+    CAROUSEL_LIST_INDICATOR_CUSTOM,
+    CAROUSEL_LIST_GROUP,
+    CAROUSEL_LIST_LOAD_MORE,
+    CAROUSEL_GRID_DEFAULT,
     CAROUSEL_GRID_GROUP,
-    CAROUSEL_GRID_MANUAL,
-    CAROUSEL_PAGED_LIST
 }

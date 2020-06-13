@@ -32,7 +32,7 @@ class MovieController : PagedListEpoxyController<Movie>() {
                 .imageUrl("http://image.tmdb.org/t/p/w185/${item.posterPath}")
                 .preloading(true)
         } ?: kotlin.run {
-            return ItemListModel_()
+            return ItemLoaderModel_()
                 .id("loading")
         }
     }

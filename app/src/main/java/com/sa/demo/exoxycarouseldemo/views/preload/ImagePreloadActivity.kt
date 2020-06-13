@@ -3,7 +3,6 @@ package com.sa.demo.exoxycarouseldemo.views.preload
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sa.demo.exoxycarouseldemo.R
-import com.sa.demo.exoxycarouseldemo.data.ITEM_TYPE
 import com.sa.demo.exoxycarouseldemo.data.Profile
 import kotlinx.android.synthetic.main.activity_image_preload.*
 
@@ -49,8 +48,7 @@ class ImagePreloadActivity : AppCompatActivity() {
                     "https://i.redditmedia.com/OHQZkFAaBOP-PNiQB-reJojV37CGu-TIa7wtoci0hXU.jpg?s=e2f84c1fc171090229a566104e7c77b0"
                 )
             ),
-            "2 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_BUILDER
+            "2 min ago"
         ),
         Profile(
             1,
@@ -66,8 +64,7 @@ class ImagePreloadActivity : AppCompatActivity() {
                     "https://i.redditmedia.com/OHQZkFAaBOP-PNiQB-reJojV37CGu-TIa7wtoci0hXU.jpg?s=e2f84c1fc171090229a566104e7c77b0"
                 )
             ),
-            "16 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_MANUAL
+            "16 min ago"
         ),
         Profile(
             2,
@@ -83,8 +80,7 @@ class ImagePreloadActivity : AppCompatActivity() {
                     "https://i.redditmedia.com/OHQZkFAaBOP-PNiQB-reJojV37CGu-TIa7wtoci0hXU.jpg?s=e2f84c1fc171090229a566104e7c77b0"
                 )
             ),
-            "21 min ago",
-            ITEM_TYPE.CAROUSEL_LIST_INDICATOR
+            "21 min ago"
         )
     )
 }

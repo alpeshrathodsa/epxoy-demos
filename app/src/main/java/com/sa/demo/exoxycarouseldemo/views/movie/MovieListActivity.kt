@@ -30,10 +30,6 @@ class MovieListActivity : AppCompatActivity() {
             moviePagedController.submitList(it)
         })
 
-        /*mViewModel.getHorizontalMovies().observe(this, Observer {
-            moviePagedController.submitHorizontalList(it)
-        })*/
-
         mViewModel.getNetworksStateLiveData().observe(this, Observer {
             it?.let {
                 when (it) {
