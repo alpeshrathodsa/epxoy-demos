@@ -128,7 +128,7 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
 
                 EnumItemType.CAROUSEL_LIST_GROUP -> {
                     //need to create custom carousel
-                    add(ItemListGroupCarouselModel(profile, true, callback))
+                    add(GroupListCarouselModel(profile, true, callback))
                 }
 
                 EnumItemType.CAROUSEL_LIST_LOAD_MORE -> {
@@ -185,7 +185,7 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                 }
 
                 EnumItemType.CAROUSEL_GRID_GROUP -> {
-                    add(ItemGridGroupCarouselModel(profile))
+                    add(GroupGridCarouselModel(profile))
                 }
             }
         }

@@ -18,10 +18,10 @@ import java.util.List;
  * <p>
  * Created on 10/6/20
  */
-public class ItemListGroupCarouselModel extends EpoxyModelGroup {
+public class GroupListCarouselModel extends EpoxyModelGroup {
     public final Profile data;
 
-    public ItemListGroupCarouselModel(Profile profile, Boolean loadMore, CarouselController.AdapterCallbacks callbacks) {
+    public GroupListCarouselModel(Profile profile, Boolean loadMore, CarouselController.AdapterCallbacks callbacks) {
         super(R.layout.item_group_carousel, buildModels(profile, loadMore, callbacks));
         this.data = profile;
         id(profile.getId());

@@ -9,10 +9,10 @@ import com.sa.demo.exoxycarouseldemo.views.carousel.GridCarouselModel_;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemGridGroupCarouselModel extends EpoxyModelGroup {
+public class GroupGridCarouselModel extends EpoxyModelGroup {
     public final Profile data;
 
-    public ItemGridGroupCarouselModel(Profile profile) {
+    public GroupGridCarouselModel(Profile profile) {
         super(R.layout.item_group_carousel, buildModels(profile));
         this.data = profile;
         id(profile.getId());
