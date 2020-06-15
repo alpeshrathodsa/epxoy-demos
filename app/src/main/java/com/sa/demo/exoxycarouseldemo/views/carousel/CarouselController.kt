@@ -22,6 +22,8 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
         fun onDeleteClicked(profile: Profile, imagePosition: Int)
     }
 
+    val customIndicatorController = CustomIndicatorCarouselModel.CustomCarouselController()
+
     override fun buildModels(listProfile: List<Profile>?, hasLoadMore: Boolean?) {
         listProfile?.forEachIndexed { index, profile ->
             itemHeader {
@@ -117,7 +119,11 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                     )
                 }
                 EnumItemType.CAROUSEL_LIST_INDICATOR_CUSTOM -> {
-
+                    customIndicatorCarousel {
+                        id(profile.id)
+                        controller(customIndicatorController)
+                        data(profile.image)
+                    }
                 }
 
                 EnumItemType.CAROUSEL_LIST_GROUP -> {
