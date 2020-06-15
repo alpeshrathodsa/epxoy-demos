@@ -51,8 +51,6 @@ public class ItemListGroupCarouselModel extends EpoxyModelGroup {
                 .id(profile.getId())
                 .padding(Carousel.Padding.dp(0, 4, 0, 16, 8))
                 .models(gridModals)
-                .profile(profile)
-                .adapterCallback(callbacks)
                 .onBind((model, view, position) -> {
                 }).onUnbind((model, view) -> {
                 })

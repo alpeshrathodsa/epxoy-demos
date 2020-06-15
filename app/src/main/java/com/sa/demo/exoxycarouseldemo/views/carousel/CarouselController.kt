@@ -18,7 +18,7 @@ import java.util.*
  */
 class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyController<List<Profile>, Boolean>() {
     interface AdapterCallbacks {
-        fun onLoadMore(profile: Profile, page: Int, totalItemsCount: Int)
+        fun onLoadMore(parentPosition: Int, page: Int, totalItemsCount: Int)
         fun onDeleteClicked(profile: Profile, imagePosition: Int)
     }
 
@@ -132,7 +132,34 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                 }
 
                 EnumItemType.CAROUSEL_LIST_LOAD_MORE -> {
+                    val imageItemModels = arrayListOf<ItemListModel_>()
+                    profile.image.forEachIndexed { loademoreIndex, url ->
+                        imageItemModels.add(
+                            ItemListModel_()
+                                .id("$url $loademoreIndex ${profile.id}")
+                                .imageUrl(url)
+                                .position(loademoreIndex)
+                                .preloading(true)
+                                .clickListener { model, parentView, clickedView, position ->
+                                    callback.onDeleteClicked(profile, position)
+                                }
+                                .onBind { model, view, position ->
+                                    Timber.e("carousel : $index carousel-item-index : ${model.position()} ========>OnBind()")
+                                }
+                        )
+                    }
+
+
                     //need to create custom carousel
+                    endlessListCarousel {
+                        id(profile.id)
+                        numViewsToShowOnScreen(1.2F)
+                        padding(Carousel.Padding.dp(0, 4, 0, 16, 8))
+                        parentPosition(index)
+                        totalResult(12)//totla number of items to fetch from db or api
+                        adapterCallback(callback)
+                        models(imageItemModels)
+                    }
                 }
 
                 EnumItemType.CAROUSEL_GRID_DEFAULT -> {

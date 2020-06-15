@@ -323,10 +323,15 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
 
     )
 
-    override fun onLoadMore(profile: Profile, page: Int, totalItemsCount: Int) {
+    /*override fun onLoadMore(profile: Profile, page: Int, totalItemsCount: Int) {
         //make loader visible here
         val profilePosition: Int = dataList.indexOf(profile)
         dataList[profilePosition].image.addAll(moreImages)
+        updateController(dataList, false)
+    }*/
+
+    override fun onLoadMore(parentPosition: Int, page: Int, totalItemsCount: Int) {
+        dataList[parentPosition].image.addAll(moreImages)
         updateController(dataList, false)
     }
 

@@ -1,12 +1,9 @@
 package com.sa.demo.exoxycarouseldemo.modal
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.epoxy.*
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import com.sa.demo.exoxycarouseldemo.R
 import com.sa.demo.exoxycarouseldemo.helper.KotlinHolder
-import com.sa.demo.exoxycarouseldemo.utils.EndlessRecyclerViewScrollListener
-import timber.log.Timber
 
 /**
  * Purpose -
@@ -26,17 +23,11 @@ abstract class CustomIndicatorCarouselModel : EpoxyModelWithHolder<CustomIndicat
 
 
     override fun bind(holder: CustomIndicatorCarouselHolder) {
+        holder.carousel.setPadding(Carousel.Padding.dp(0, 4, 0, 16, 8))
         holder.carousel.setController(controller)
         holder.indicator.attachToRecyclerView(holder.carousel)
 
         controller.setData(data, false)
-
-        holder.carousel.addOnScrollListener(object : EndlessRecyclerViewScrollListener(holder.carousel.layoutManager as LinearLayoutManager) {
-            override fun onLoadMore(page: Int, totalItemsCount: Int) {
-                Timber.e("Carousel Page : $page")
-            }
-
-        })
     }
 
     override fun unbind(holder: CustomIndicatorCarouselHolder) {
