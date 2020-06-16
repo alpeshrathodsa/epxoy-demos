@@ -6,7 +6,7 @@ data class Profile(
     val image: ArrayList<String>,
     val lastSeen: String,
     val type: EnumItemType = EnumItemType.CAROUSEL_LIST_DEFAULT,
-    val hasMore: Boolean = false
+    var hasMore: Boolean = false
 )
 
 enum class EnumItemType {

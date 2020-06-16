@@ -11,12 +11,18 @@
         android:layout_height="wrap_content"
         android:inflatedId="@+id/recycler_view" />
 
-    <!--If want to add loader please uncomment this part-->
-    <!--<ViewStub
+    <ViewStub
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:inflatedId="@+id/recycler_indicator" />
+
+    <ViewStub
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="end|center_vertical"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp" />-->
+        android:layout_marginBottom="16dp" />
 
 </FrameLayout>

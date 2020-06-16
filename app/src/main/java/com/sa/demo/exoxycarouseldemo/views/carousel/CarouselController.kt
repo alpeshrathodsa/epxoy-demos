@@ -2,6 +2,7 @@ package com.sa.demo.exoxycarouseldemo.views.carousel
 
 import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.CarouselModel_
+import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.Typed2EpoxyController
 import com.sa.demo.exoxycarouseldemo.data.EnumItemType
 import com.sa.demo.exoxycarouseldemo.data.Profile
@@ -25,7 +26,9 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
     val customIndicatorController = CustomIndicatorCarouselModel.CustomCarouselController()
 
     override fun buildModels(listProfile: List<Profile>?, hasLoadMore: Boolean?) {
+
         listProfile?.forEachIndexed { index, profile ->
+
             itemHeader {
                 id("Header ${profile.id} ${profile.name}")
                 title(profile.name)
@@ -34,9 +37,9 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
 
             when (profile.type) {
                 EnumItemType.CAROUSEL_LIST_DEFAULT -> {
-                    val imageItemModels = arrayListOf<ItemListModel_>()
+                    val listModel = arrayListOf<ItemListModel_>()
                     profile.image.forEachIndexed { builderIndex, url ->
-                        imageItemModels.add(
+                        listModel.add(
                             ItemListModel_()
                                 .id("$url $builderIndex ${profile.id}")
                                 .imageUrl(url)
@@ -75,7 +78,7 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                             .id(profile.id)
                             .numViewsToShowOnScreen(1.2F)
                             .padding(Carousel.Padding.dp(0, 4, 0, 16, 8))
-                            .models(imageItemModels)
+                            .models(listModel)
                             .onBind { model, view, position ->
                                 Timber.e("carousel-index : $index ========>OnBind()")
                             }
@@ -86,9 +89,9 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                 }
 
                 EnumItemType.CAROUSEL_LIST_INDICATOR -> {
-                    val imageItemModels = arrayListOf<ItemListModel_>()
+                    val listModel = arrayListOf<ItemListModel_>()
                     profile.image.forEachIndexed { indicatorIndex, url ->
-                        imageItemModels.add(
+                        listModel.add(
                             ItemListModel_()
                                 .id("$url $indicatorIndex ${profile.id}")
                                 .imageUrl(url)
@@ -109,7 +112,7 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                             .id(profile.id)
                             .numViewsToShowOnScreen(1.2F)
                             .padding(Carousel.Padding.dp(0, 4, 0, 16, 8))
-                            .models(imageItemModels)
+                            .models(listModel)
                             .onBind { model, view, position ->
                                 Timber.e("carousel-index : $index ========>OnBind()")
                             }
@@ -118,6 +121,50 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                             }
                     )
                 }
+
+                EnumItemType.CAROUSEL_LIST_GROUP -> {
+                    val groupModel: ArrayList<EpoxyModel<*>?>? = arrayListOf()
+
+                    val listModel = arrayListOf<ItemListModel_>()
+                    profile.image.forEachIndexed { groupIndex, url ->
+                        listModel.add(
+                            ItemListModel_()
+                                .id("$url $groupIndex ${profile.id}")
+                                .imageUrl(url)
+                                .position(groupIndex)
+                                .preloading(true)
+                                .clickListener { model, parentView, clickedView, position ->
+                                    //callback.onDeleteClicked(profile, position)
+                                    //commented because it will call load more while we delete items
+                                }
+                                .onBind { model, view, position ->
+                                    Timber.e("carousel : $index carousel-item-index : ${model.position()} ========>OnBind()")
+                                }
+                        )
+                    }
+
+                    //1st viewstub
+                    groupModel?.add(
+                        EndlessListCarouselModel_()
+                            .id("carousel")
+                            .numViewsToShowOnScreen(1.2F)
+                            .padding(Carousel.Padding.dp(0, 4, 0, 16, 8))
+                            .parentPosition(index)
+                            .totalResult(12)//totla number of items to fetch from db or api
+                            .adapterCallback(callback)
+                            .models(listModel)
+                    )
+
+                    //2nd viewstub
+                    groupModel?.add(IndicatorModel_().id("indicator"))
+
+                    //3rd viewstub
+                    groupModel?.add(ItemHorizontalLoaderModel_().id("loading").show(profile.hasMore))
+
+                    //add to controller
+                    add(GroupListCarouselModel_(groupModel).id(profile.id))
+                }
+
                 EnumItemType.CAROUSEL_LIST_INDICATOR_CUSTOM -> {
                     customIndicatorCarousel {
                         id(profile.id)
@@ -126,15 +173,31 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                     }
                 }
 
-                EnumItemType.CAROUSEL_LIST_GROUP -> {
-                    //need to create custom carousel
-                    add(GroupListCarouselModel(profile, true, callback))
+                EnumItemType.CAROUSEL_GRID_DEFAULT -> {
+                    val gridModel: MutableList<ItemGridModel_> = ArrayList()
+                    profile.image.forEachIndexed { gridManualIndex, url ->
+                        gridModel.add(
+                            ItemGridModel_()
+                                .id(url, profile.id.toLong())
+                                .imageUrl(url)
+                                .preloading(true)
+                        )
+                    }
+                    add(
+                        GridCarouselModel_()
+                            .numViewsToShowOnScreen(2.5f)
+                            .id(profile.id.toLong())
+                            .title(profile.name)
+                            .models(gridModel)
+                            .onBind { model: GridCarouselModel_?, view: GridCarousel?, position: Int -> }
+                            .onUnbind { model, view -> }
+                    )
                 }
 
                 EnumItemType.CAROUSEL_LIST_LOAD_MORE -> {
-                    val imageItemModels = arrayListOf<ItemListModel_>()
+                    val listModel = arrayListOf<ItemListModel_>()
                     profile.image.forEachIndexed { loademoreIndex, url ->
-                        imageItemModels.add(
+                        listModel.add(
                             ItemListModel_()
                                 .id("$url $loademoreIndex ${profile.id}")
                                 .imageUrl(url)
@@ -158,30 +221,8 @@ class CarouselController(private val callback: AdapterCallbacks) : Typed2EpoxyCo
                         parentPosition(index)
                         totalResult(12)//totla number of items to fetch from db or api
                         adapterCallback(callback)
-                        models(imageItemModels)
+                        models(listModel)
                     }
-                }
-
-                EnumItemType.CAROUSEL_GRID_DEFAULT -> {
-                    val urls: List<String> = profile.image
-                    val gridModals: MutableList<ItemGridModel_> = ArrayList()
-                    profile.image.forEachIndexed { gridManualIndex, url ->
-                        gridModals.add(
-                            ItemGridModel_()
-                                .id(url, profile.id.toLong())
-                                .imageUrl(url)
-                                .preloading(true)
-                        )
-                    }
-                    add(
-                        GridCarouselModel_()
-                            .numViewsToShowOnScreen(2.5f)
-                            .id(profile.id.toLong())
-                            .title(profile.name)
-                            .models(gridModals)
-                            .onBind { model: GridCarouselModel_?, view: GridCarousel?, position: Int -> }
-                            .onUnbind { model, view -> }
-                    )
                 }
 
                 EnumItemType.CAROUSEL_GRID_GROUP -> {

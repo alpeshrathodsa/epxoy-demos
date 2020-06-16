@@ -122,7 +122,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
     val newList = listOf(
         Profile(
             6,
-            "Rambo",
+            "CAROUSEL LIST CUSTOM INDICATOR",
             ArrayList(
                 listOf(
                     "https://i.redd.it/nbju2rir9xp11.jpg",
@@ -135,11 +135,28 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "2 min ago",
-            EnumItemType.CAROUSEL_LIST_GROUP
+            EnumItemType.CAROUSEL_LIST_INDICATOR_CUSTOM
         ),
         Profile(
+            10,
+            "CAROUSEL GRID DEFAULT",
+            ArrayList(
+                listOf(
+                    "https://i.redd.it/y20c2oi9myp11.jpg",
+                    "https://i.redd.it/g7cv0byl5wp11.jpg",
+                    "https://i.redd.it/nbju2rir9xp11.jpg",
+                    "https://i.redditmedia.com/pA8syU4qzqyqn8ggXxZntuM-JIvBWGQvRo1c44yIvPs.jpg?s=b92a768940b1fa07b54e47d5dbe95f99",
+                    "https://i.redd.it/c2ozz6pdhyp11.jpg",
+                    "https://i.redd.it/6b740x7ptyp11.jpg",
+                    "https://i.redd.it/qqi87wl8uup11.jpg"
+                )
+            ),
+            "16 min ago",
+            EnumItemType.CAROUSEL_GRID_DEFAULT
+        ),
+        /*Profile(
             7,
-            "Johny",
+            "CAROUSEL_ENDLESS_LIST_LOAD_MORE",
             ArrayList(
                 listOf(
                     "https://i.redditmedia.com/pA8syU4qzqyqn8ggXxZntuM-JIvBWGQvRo1c44yIvPs.jpg?s=b92a768940b1fa07b54e47d5dbe95f99",
@@ -152,11 +169,11 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "16 min ago",
-            EnumItemType.CAROUSEL_LIST_LOAD_MORE
-        ),
+            EnumItemType.CAROUSEL_ENDLESS_LIST_LOAD_MORE
+        ),*/
         Profile(
             8,
-            "Tony",
+            "CAROUSEL LIST LOAD MORE",
             ArrayList(
                 listOf(
                     "https://i.redd.it/g7cv0byl5wp11.jpg",
@@ -169,11 +186,11 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "21 min ago",
-            EnumItemType.CAROUSEL_GRID_DEFAULT
+            EnumItemType.CAROUSEL_LIST_LOAD_MORE
         ),
         Profile(
             9,
-            "Jack",
+            "CAROUSEL GRID GROUP",
             ArrayList(
                 listOf(
                     "https://i.redd.it/c2ozz6pdhyp11.jpg",
@@ -227,7 +244,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
     val recentlyActive = listOf(
         Profile(
             0,
-            "Jenifer",
+            "CAROUSEL LIST DEFAULT",
             ArrayList(
                 listOf(
                     "https://i.redd.it/hpz1lhk1jzp11.jpg",
@@ -244,7 +261,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
         ),
         Profile(
             1,
-            "Marcus",
+            "CAROUSEL LIST INDICATOR",
             ArrayList(
                 listOf(
                     "https://i.redd.it/kkzgwnb0rtt11.jpg",
@@ -261,7 +278,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
         ),
         Profile(
             2,
-            "Lisa",
+            "CAROUSEL LIST GROUP",
             ArrayList(
                 listOf(
                     "https://i.redd.it/x0v1ixpp3yp11.jpg",
@@ -274,7 +291,7 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
                 )
             ),
             "21 min ago",
-            EnumItemType.CAROUSEL_LIST_INDICATOR_CUSTOM
+            EnumItemType.CAROUSEL_LIST_GROUP
         )
         /*,
         Profile(
@@ -331,8 +348,19 @@ class CarouselDemoActivity : AppCompatActivity(), CarouselController.AdapterCall
     }*/
 
     override fun onLoadMore(parentPosition: Int, page: Int, totalItemsCount: Int) {
-        dataList[parentPosition].image.addAll(moreImages)
-        updateController(dataList, false)
+        if (parentPosition == 2) {
+            dataList[parentPosition].hasMore = true//set horizontal load more true
+            updateController(dataList, false)
+            Handler().postDelayed({
+                dataList[parentPosition].image.addAll(moreImages)
+                dataList[parentPosition].hasMore = false//set horizontal load more true
+                updateController(dataList, false)
+            }, 5000)
+        } else {
+            updateController(arrayListOf(), true)
+            dataList[parentPosition].image.addAll(moreImages)
+            updateController(dataList, false)
+        }
     }
 
 
